@@ -1,0 +1,26 @@
+#wrapper{
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#errors{
+    text-decoration: none;
+    color: red;
+    list-style: none;
+}
+
+.form {
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+    height: 300px;
+    width: 300px;
+    
+}
+
+.form_field{
+    margin-top: 10px;
+    margin-left: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'my_account.css' %}">
+</head>
+<body>
+    <div id="wrapper"> 
+        <div id="header">
+            <div class="head_content">
+                <h3>Edit My account</h3>
+            </div>
+            <div class="head_content">
+                <div id="actionbuttons">
+                    <p class="actions"><a href="/quotes">Back</a></p>
+                    <button><p class="actions"><a href="/logout">Logout</a></p></button>
+                </div>
+            </div>
+        </div>
+        <div id="edit_form">
+            <form action="/update" method="post">
+                {% csrf_token %}
+                First Name <input type="text" name="updated_first_name" value="{{my_account.first_name}}" class="form_field"><br>
+                Last Name <input type="text" name="updated_last_name" value="{{my_account.last_name}}" class="form_field"><br>
+                Email <input type="email" name="updated_email" value="{{my_account.email}}" class="form_field"><br>
+                <input type="hidden" name="user_id_updating" value="{{my_account.id}}" class="form_field"><br>
+                <input type="submit" value="Update" class="form_field" id="button">
+
+                <div id="error_messages">
+                    {% if messages %}
+                    <ul>
+                        {% for one_message in messages %}
+                        <li>{{one_message}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                    <p>{{request.session.thank_you}}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

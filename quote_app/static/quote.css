@@ -1,0 +1,67 @@
+#wrapper{
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header{
+    width: 1100px;
+    height: 70px;
+    display: block;
+}
+
+#header h4{
+    display: inline-block;
+    margin-right: 500px;
+}
+
+.action{
+    vertical-align: middle;
+    display: inline-block;
+    margin: 5px;
+}
+
+ #main_content{
+     display: block;
+     width: 1000px;
+ }
+
+ .quote_section{
+     display: inline-block;
+     vertical-align: top;
+     width: 350px;
+     margin-left: 45px;
+ }
+
+ .quote_section #title_quote {
+    margin-left: 130px;
+}
+
+ .each_quote {
+    border: 2px black solid;
+    padding: 5px;
+    height: 250px;
+    width: 340px;
+    margin-top: 5px;
+ }
+
+ #like_form{
+     display: inline-block;
+ }
+
+ .like{
+     display: inline-block;
+ }
+
+ #create_quote{
+     margin-left: 350px;
+     width: 250px;
+ }
+
+#create_quote li {
+    list-style: none;
+    text-decoration: none;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

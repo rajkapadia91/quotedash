@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div class="header_content">
+                <h3>{{this_user.first_name}} {{this_user.last_name}}'s Quotes</h3>
+            </div>
+            <div class="header_content">
+                <div class="actions">
+                    <p><a href="/quotes">Back</a></p>
+                </div>
+                <div class="actions">
+                   <button><p><a href="/logout">Logout</a></p></button>
+                </div>
+            </div>
+        </div>
+        <div id="profile_wall">
+            {% for one_quote in this_user.quotes.all %}
+            <div class="this_user_quotes" >
+               <p>{{one_quote.author}}: "{{one_quote.quote}}"</p>
+               {% if request.session.user_id == one_quote.user.id %}
+                    <p><a href="/delete_quote/{{one_quote.id}}">Delete</a></p>
+                    {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

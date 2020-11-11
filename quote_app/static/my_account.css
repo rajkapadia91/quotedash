@@ -1,0 +1,53 @@
+#wrapper{
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header{
+    width: 1000px;
+    height: 70px;
+    display: block;
+}
+
+.head_content{
+    display: inline-block;
+
+}
+
+#actionbuttons{
+    display: inline;
+    margin-left: 600px;
+}
+
+.actions{
+    display: inline-block;
+    margin: 10px;
+}
+
+#edit_form{
+    display: block;
+    margin-left: 10px;
+    height: 300px;
+    width: 300px;
+}
+
+#edit_form #button{
+    margin-left: 70px;
+}
+.form_field{
+    display: inline-block;
+    margin: 5px;
+}
+
+#error_messages{
+    text-decoration: none;
+    color: red;
+    list-style: none;
+}
+
+#error_messages ul{
+    text-decoration: none;
+    color: red;
+    list-style: none;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote.css' %}">
+</head>
+<body>
+    <div id="wrapper" >
+        <div id="header">
+            <h4>Welcome {{request.session.user_first_name}} {{request.session.user_last_name}}!</h4>
+            <p class="action"><a href="/my_account/{{request.session.user_id}}">Edit My Account</a></p>
+            <button id="logout"><p class="action"><a href="/logout">Logout</a></p></button>
+            <p class="action"><a href="/profile/{{request.session.user_id}}">My Profile</a></p>
+        </div>
+        <div id="main_content">
+            <div class="quote_section"> 
+                <h3 id="title_quote">Quotes</h3>
+                <div id="all_quotes" >
+                    {% for each_quote in all_quotes reversed %}
+                    <div class="each_quote" >
+                    <p>{{each_quote.author}}: "{{each_quote.quote}}"</p>
+                    <h5>Posted by: <a href="/profile/{{each_quote.user.id}}">{{each_quote.user.first_name}} {{each_quote.user.last_name}}</a></h5>
+                    <h5> {{each_quote.like_quotes.count}} People liked 
+                        <form action="/like" method="post" id="like_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="like" id="" value="Like" class="like">
+                            <input type="hidden" name="user_liking_id" id="" value="{{request.session.user_id}}" class="like">
+                            <input type="hidden" name="quote_id" id="" value="{{each_quote.id}}" class="like">
+                            <input type="submit" value="Like" class="like">
+                        </form>
+                    </h5>
+                    {% if request.session.user_id == each_quote.user.id %}
+                    <p><a href="/delete/{{each_quote.id}}">Delete</a></p>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="quote_section" id="create_quote">
+                {% if messages %}
+                <ul>
+                    {% for one_message in messages %}
+                    <li>{{one_message}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+                <h3>Add a Quote!</h3>
+                <form action="/create_quote" method="post">
+                    {% csrf_token %}
+                    Author <input type="text" name="author" id=""><br>
+                    <p id="title" >Quote</p> <textarea name="quote" id="" cols="30" rows="10"></textarea><br>
+                    <input type="hidden" name="user_posting" value="{{request.session.user_id}}">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
